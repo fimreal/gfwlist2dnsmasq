@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
 
       - name: generate file
-        run: mkdir -p public && sh -xe ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist.conf --ipset gfwlist --extrafile mylist.txt  --reslover 1.1.1.1#53
+        run: mkdir -p public && /bin/bash -xe ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist.conf --ipset gfwlist --extrafile mylist.txt  --reslover 1.1.1.1#53
 
       # - name: Upload Release Assets
       #   id: upload-release-assets

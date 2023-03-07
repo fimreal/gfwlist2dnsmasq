@@ -1,4 +1,7 @@
 # gfwlist2dnsmasq
+
+[![github pages](https://github.com/fimreal/gfwlist2dnsmasq/actions/workflows/cron_everyday.yaml/badge.svg?branch=main)](https://github.com/fimreal/gfwlist2dnsmasq/actions/workflows/cron_everyday.yaml)
+
 Fetch https://github.com/gfwlist/gfwlist and converte into dnsmasq rule
 
 

@@ -1,0 +1,35 @@
+name: github pages
+
+on:
+  schedule:
+    - cron: "29 0 * * *"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+          fetch-depth: 0
+
+      - name: generate file
+        run: mkdir -p public && sh -xe ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist.conf --ipset gfwlist --extrafile mylist.txt  --reslover 1.1.1.1#53
+
+      # - name: Upload Release Assets
+      #   id: upload-release-assets
+      #   uses: dwenegar/upload-release-assets@v1
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #   with:
+      #     release_id: ${{ steps.create_release.outputs.id }}
+      #     assets_path: ./gfwlist.conf
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          cname: gfwlist2dnsmasq.epurs.com
+          keep_files: false
+          publish_branch: public

@@ -11,6 +11,9 @@ Fetch https://github.com/gfwlist/gfwlist and converte into dnsmasq rule
 ./gfwlist2dnsmasq.sh --mirror github --dstfile ./gfwlist.conf --ipset gfwlist --extrafile mylist.txt  --reslover 1.1.1.1#53
 ```
 
+or take Github action assest [gfwlist.conf](https://github.com/fimreal/gfwlist2dnsmasq/raw/public/gfwlist.conf)
+
+
 # ref. 
 
 https://github.com/gfwlist/gfwlist

@@ -83,6 +83,9 @@ bitbucket)
 tuxfamily)
     Download_URL="https://git.tuxfamily.org/gfwlist/gfwlist.git/plain/gfwlist.txt"
     ;;
+*)
+    Download_URL="${mirror}"
+    ;;
 esac
 
 # 检查命令是否存在
@@ -136,8 +139,7 @@ for d in ${Domains}; do
 done
 
 # Info "添加自定义域名"
-if [ -n "
-" ]; then
+if [ -n "${extrafile}" ]; then
     echo -e "\n# custom domain" >>${dstFile}
     for d in $(cat ${extraFile}); do
         conv $d >>${dstFile}

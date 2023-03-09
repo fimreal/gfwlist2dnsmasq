@@ -16,6 +16,9 @@ jobs:
           submodules: true
           fetch-depth: 0
 
+      - name: script file
+        run: mkdir -p public && cp ./gfwlist2dnsmasq.sh ./public/gfwlist2dnsmasq.sh
+
       - name: generate file
         run: mkdir -p public && /bin/bash ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist.conf --extrafile mylist.txt  --reslover 1.1.1.1#53
 

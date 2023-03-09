@@ -125,7 +125,9 @@ Info "开始下载并处理源文件"
 Domains="$(httpGet ${Download_URL} | base64 -d | awk -F '|' '/^\|\|/{print $3}')"
 
 conv() {
-    printf "server=/%s/%s\n" $1 ${reslover}
+    if [ "${reslover}" != "none" ]; then
+        printf "server=/%s/%s\n" $1 ${reslover}
+    fi
     if [ -n "${ipset}" ]; then
         printf "ipset=/%s/%s\n" $1 ${ipset}
     fi

@@ -5,7 +5,7 @@ on:
     - cron: "29 0 * * *"
   push:
     branches:
-      - 'main'
+      - "main"
 
 jobs:
   deploy:
@@ -17,7 +17,13 @@ jobs:
           fetch-depth: 0
 
       - name: generate file
-        run: mkdir -p public && /bin/bash -xe ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist.conf --ipset gfwlist --extrafile mylist.txt  --reslover 1.1.1.1#53
+        run: mkdir -p public && /bin/bash ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist.conf --extrafile mylist.txt  --reslover 1.1.1.1#53
+
+      - name: generate ipset file
+        run: mkdir -p public && /bin/bash ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist_ipset.conf --ipset gfwlist --extrafile mylist.txt
+
+      - name: generate customdns&ipset file
+        run: mkdir -p public && /bin/bash ./gfwlist2dnsmasq.sh --dstfile ./public/gfwlist_in_ipset.conf --ipset gfwlist --extrafile mylist.txt  --reslover 1.1.1.1#53
 
       # - name: Upload Release Assets
       #   id: upload-release-assets

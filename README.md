@@ -20,7 +20,7 @@ Or take Github action assest:
 
 CDN:
 
-https://gfwlist2dnsmasq.epurs.com/\<filename\>
+https://gfwlist2dnsmasq.epurs.com/<filename\>
 
 # usage
 
